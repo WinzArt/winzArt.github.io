@@ -34,14 +34,19 @@ window.addEventListener('click', function (e) {
 
 // Darkmode toggle
 const darkToggle = document.querySelector('#dark-toggle')
+const darkLogo = document.querySelector('#dark-logo')
 const html = document.querySelector('html')
 
 darkToggle.addEventListener('click', function () {
   if (darkToggle.checked) {
     html.classList.add('dark')
+    darkLogo.classList.remove('bxs-sun')
+    darkLogo.classList.add('bxs-moon')
     localStorage.theme = 'dark'
   } else {
     html.classList.remove('dark')
+    darkLogo.classList.add('bxs-sun')
+    darkLogo.classList.remove('bxs-moon')
     localStorage.theme = 'light'
   }
 })
@@ -49,6 +54,8 @@ darkToggle.addEventListener('click', function () {
 // Posisi Togle Mode
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
   darkToggle.checked = true
+  darkLogo.classList.add('bxs-moon')
 } else {
   darkToggle.checked = false
+  darkLogo.classList.add('bxs-sun')
 }
